@@ -9,6 +9,7 @@ import {
   showElement,
   hideElement,
   customConfirm,
+  setLazyLoading,
 } from '../util/index.js';
 
 export class SavedVideo {
@@ -157,6 +158,8 @@ export class SavedVideo {
     removeSkeleton(this.$savedVideoWrapper);
 
     this.$savedVideoWrapper.innerHTML = savedVideoData.items.map(item => this.makeTemplate(item)).join('');
+
+    setLazyLoading();
   }
 
   async renderNewVideo(videoId) {
