@@ -43,7 +43,7 @@ export class SavedVideo {
     if (target.classList.contains('js-check-button')) {
       this.handleCheckButton(target);
     }
-    
+
     if (target.classList.contains('js-delete-button')) {
       this.handleDeleteButton(target);
     }
@@ -51,16 +51,17 @@ export class SavedVideo {
     if (target.classList.contains('js-like-button')) {
       this.handleLikeButton(target);
     }
-
   }
 
   handleCheckButton(target) {
     if (!this.isLiked) {
       target.closest('.js-clip-article').remove();
     }
-    
+
     this.savedVideoManager.checkVideo(target.closest('.js-emoji-button-list').dataset.videoId);
-    const isCheckedVideo = this.savedVideoManager.isCheckedVideo(target.closest('.js-emoji-button-list').dataset.videoId);
+    const isCheckedVideo = this.savedVideoManager.isCheckedVideo(
+      target.closest('.js-emoji-button-list').dataset.videoId
+    );
 
     if (isCheckedVideo) {
       target.classList.remove('opacity-hover');
@@ -75,25 +76,27 @@ export class SavedVideo {
     if (this.isLiked) {
       target.closest('article').remove();
     }
-    
+
     this.savedVideoManager.likeVideo(target.closest('ul').dataset.videoId);
     const isLikedVideo = this.savedVideoManager.isLikedVideo(target.closest('ul').dataset.videoId);
-    
+
     if (isLikedVideo) {
       target.classList.remove('opacity-hover');
     } else {
       target.classList.add('opacity-hover');
     }
-    
+
     showSnackbar(isLikedVideo ? SNACKBAR_MESSAGE.LIKE_VIDEO_SUCCESS : SNACKBAR_MESSAGE.UNLIKE_VIDEO_SUCCESS);
   }
 
   handleDeleteButton(target) {
-    customConfirm(CONFIRM_MESSAGE.DELETE_VIDEO).then(() => {
-      target.closest('.js-clip-article').remove();
-      this.savedVideoManager.deleteVideo(target.closest('.js-emoji-button-list').dataset.videoId);
-      showSnackbar(SNACKBAR_MESSAGE.DELETE_SUCCESS);
-    });
+    customConfirm(CONFIRM_MESSAGE.DELETE_VIDEO)
+      .then(() => {
+        target.closest('.js-clip-article').remove();
+        this.savedVideoManager.deleteVideo(target.closest('.js-emoji-button-list').dataset.videoId);
+        showSnackbar(SNACKBAR_MESSAGE.DELETE_SUCCESS);
+      })
+      .catch(() => {});
   }
 
   async fetchSavedVideoData(idList) {
@@ -105,7 +108,6 @@ export class SavedVideo {
       return { items: [] };
     }
   }
-  
 
   makeTemplate(videoData) {
     return getVideoTemplate({

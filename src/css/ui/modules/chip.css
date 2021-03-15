@@ -2,13 +2,16 @@
   padding: 0 12px;
   background-color: #efefef;
   border-radius: 100px;
-  display: inline-flex;
   color: rgba(0, 0, 0, 0.87);
   align-items: center;
   height: 32px;
   font-size: 14px;
   cursor: pointer;
   border: none;
+  width: 8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chip .icon {

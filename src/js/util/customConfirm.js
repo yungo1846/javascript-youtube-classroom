@@ -17,13 +17,13 @@ const confirmTemplate = message => {
 };
 
 export const customConfirm = message => {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     $('#app').insertAdjacentHTML('beforeend', confirmTemplate(message));
     $('.js-confirm-modal').addEventListener('click', ({ currentTarget, target }) => {
       if (currentTarget === target) {
         currentTarget.remove();
 
-        return;
+        reject('Clicked dimmed area.');
       }
 
       if (target.tagName !== 'BUTTON') {

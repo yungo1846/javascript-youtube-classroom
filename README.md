@@ -58,9 +58,10 @@
 - [ ] 스크롤 페이징 방식을 이용해서 Lazy loading을 개선한다.
 - [ ] 반응형 웹: 유저가 사용하는 디바이스의 가로 길이에 따라 검색결과의 row 당 column 갯수를 변경한다.
   - [ ] youtubeCard.css 파일에 있는 .video-wrapper의 css 속성 중 grid-template-columns의 속성을 auto-fill에서 아래의 요구사항에 맞게 변경한다.
-  - 992px 이하: 4개
-  - 768px 이하: 2개
-  - 576px 이하: 1개
+  - 1280px 이하: 4개
+  - 960px 이하: 3개
+  - 600px 이하: 2개
+  - 400px 이하: 1개
 
 <br>
 

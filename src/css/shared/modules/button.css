@@ -6,6 +6,7 @@
   outline: 0;
   border-style: none;
   cursor: pointer;
+  word-break: keep-all;
 }
 
 .btn:disabled {
